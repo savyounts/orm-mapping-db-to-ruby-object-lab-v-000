@@ -6,7 +6,7 @@ class Student
     student.id = row[0]
     student.name = row[1]
     student.grade = row[2]
-    student 
+    student
   end
 
   def self.all
@@ -19,22 +19,22 @@ class Student
     SELECT * FROM students
     WHERE name = ?
     LIMIT 1
-    SQL 
+    SQL
 
     DB[:conn].execute(sql, name).map do |row|
       self.new_from_db(row)
       end
   end
-  
+
   def save
     sql = <<-SQL
-      INSERT INTO students (name, grade) 
+      INSERT INTO students (name, grade)
       VALUES (?, ?)
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
   end
-  
+
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS students (
